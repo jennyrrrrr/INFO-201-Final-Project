@@ -1,0 +1,145 @@
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(stringr)
+library(knitr)
+
+df <- read.csv("./data/shootings-2018.csv", stringsAsFactors = FALSE)
+
+# shooting events
+num_shooting_events <- nrow(df)
+
+# lives lost
+num_dead <- df %>%
+  select(num_killed) %>%
+  sum()
+
+col_names <- colnames(df)
+
+num_variables <- ncol(df)
+
+# City most impacted (as decided by total number injured and killed)
+most_impacted_city <- df %>%
+  group_by(city) %>%
+  summarize(num_impacted = sum(num_killed + num_injured)) %>%
+  arrange(-num_impacted) %>%
+  filter(num_impacted == max(num_impacted)) %>%
+  select(city)
+
+df <- mutate(df, num_impacted = (num_killed + num_injured))
+
+# Date with most impacted
+most_impacted_date <- df %>%
+  group_by(date) %>%
+  summarise(impacted = sum(num_impacted)) %>%
+  filter(impacted == max(impacted)) %>%
+  select(date)
+
+most_impacted_date1 <- most_impacted_date[1, ]
+most_impacted_date2 <- most_impacted_date[2, ]
+
+# State with most people killed
+state_most_killed <- df %>%
+  group_by(state) %>%
+  summarise(killed = sum(num_killed)) %>%
+  filter(killed == max(killed)) %>%
+  select(state)
+
+# Add column for month
+month <- format(as.Date(df$date, "%B %d,%Y"), format = "%m")
+df <- mutate(df, shooting_month = month)
+day <- weekdays(as.Date(df$date, "%B %d,%Y"))
+df <- mutate(df, weekday = day)
+# Month with most killed
+monthnum_most_killed <- df %>%
+  group_by(shooting_month) %>%
+  summarize(
+    total_killed = sum(num_killed), total_injured = sum(num_injured),
+    avg_impacted = round(mean(num_impacted))
+  ) %>%
+  filter(total_killed == max(total_killed)) %>%
+  select(shooting_month) %>%
+  as.numeric()
+
+monthname_most_killed <- month.name[monthnum_most_killed]
+
+# Month with most injured
+tot_injured <- df %>%
+  group_by(shooting_month) %>%
+  summarize(
+    total_killed = sum(num_killed), total_injured = sum(num_injured),
+    avg_impacted = round(mean(num_impacted))
+  ) %>%
+  filter(total_injured == max(total_injured))
+
+max_injured <- tot_injured %>%
+  select(total_injured)
+
+month_max_injured <- tot_injured %>%
+  select(shooting_month) %>%
+  as.numeric()
+
+month_max_injured <- month.name[month_max_injured]
+
+# Month with highest avg impacted
+month_most_impacted <- df %>%
+  group_by(shooting_month) %>%
+  summarize(
+    total_killed = sum(num_killed), total_injured = sum(num_injured),
+    avg_impacted = round(mean(num_impacted))
+  ) %>%
+  filter(avg_impacted == max(avg_impacted)) %>%
+  select(shooting_month) %>%
+  as.numeric()
+month_most_impacted <- month.name[month_most_impacted]
+
+
+# My event
+event <- df %>%
+  filter(num_killed == 17 & num_injured == 17)
+
+event_date <- event %>%
+  select(date)
+event_city <- event %>%
+  select(city)
+event_state <- event %>%
+  select(state)
+event_injured <- event %>%
+  select(num_injured)
+event_killed <- event %>%
+  select(num_killed)
+
+# geo styling
+geo <- list(
+  scope = "usa",
+  showland = TRUE,
+  landcolor = toRGB("gray95"),
+  countrycolor = toRGB("gray80")
+)
+
+
+p <- plot_geo(df, lat = ~lat, lon = ~long) %>%
+  add_markers(
+    text = ~ paste(
+      "State: ", state, "<br>",
+      "City: ", city, "<br>",
+      "Number of Deaths: ", num_killed, "<br>",
+      "Number of Injured: ", num_injured, "<br>"
+    ),
+    colors = c("yellow", "red"),
+    color = ~num_impacted, symbol = I("circle"), hoverinfo = "text",
+    marker = list(size = ~num_impacted)
+  ) %>%
+  colorbar(title = "Number of Victims") %>%
+  layout(title = "Shooting incidents in the U.S. <br />(Hover for info)",
+         geo = geo)
+
+
+# plot 2 - time vs event
+
+p2 <- ggplot() + geom_bar(aes(y = num_impacted, x = weekday, fill = num_killed),
+  data = df, stat = "identity"
+) + labs(
+  title = "Impact of Mass Shootings During the Week",
+  x = "Day of the Week", y = "Number of People Impacted"
+)

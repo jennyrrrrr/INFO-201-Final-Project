@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3420717951",
+    "hash" : "3325674908",
     "id" : "F7E4570C",
-    "lastKnownWriteTime" : 1574138257,
-    "last_content_update" : 1574138257874,
+    "lastKnownWriteTime" : 1574139808,
+    "last_content_update" : 1574139808862,
     "path" : "~/Desktop/INFO/Project/INFO-201/ui.R",
     "project_path" : "ui.R",
     "properties" : {
-        "cursorPosition" : "29,27",
-        "scrollLine" : "7"
+        "cursorPosition" : "31,34",
+        "scrollLine" : "16"
     },
     "read_only" : false,
     "read_only_alternatives" : [

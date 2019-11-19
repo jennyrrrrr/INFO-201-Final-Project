@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2726514058",
+    "hash" : "2843406784",
     "id" : "7B105B1A",
-    "lastKnownWriteTime" : 1574138259,
-    "last_content_update" : 1574138259194,
+    "lastKnownWriteTime" : 1574139843,
+    "last_content_update" : 1574139843529,
     "path" : "~/Desktop/INFO/Project/INFO-201/server.R",
     "project_path" : "server.R",
     "properties" : {
-        "cursorPosition" : "15,43",
+        "cursorPosition" : "18,17",
         "scrollLine" : "0"
     },
     "read_only" : false,

@@ -57,7 +57,8 @@ geo <- list(
   projection = list(type = 'Mercator')
 )
 
-exports_p <- plot_geo(modified_imp_exp_df) %>%
+exports_p <- function(){
+  plot_geo(modified_imp_exp_df) %>%
   add_trace(
     z = ~Export.Value, color = ~Export.Value, colors = 'Greens',
     text = ~Area, locations = ~Code, marker = list(line = l)
@@ -67,6 +68,7 @@ exports_p <- plot_geo(modified_imp_exp_df) %>%
     title = 'Exports in 2017',
     geo = geo
   )
+}
 exports_p
 
 

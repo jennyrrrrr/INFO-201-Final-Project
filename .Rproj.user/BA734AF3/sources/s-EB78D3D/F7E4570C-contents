@@ -11,23 +11,27 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(
-
-    # Application title
-    titlePanel("Undernourishment Around the World"),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("year",
-                        "Year:",
-                        min = 2000,
-                        max = 2016,
-                        value = 2010)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotlyOutput("undernourishPlot")
-        )
-    )
+    titlePanel("Project Name"),
+    navbarPage("Project: Hungry",
+        tabPanel("Hunger Rates"),
+        tabPanel("Global Undernourishment", sidebarLayout(
+                             sidebarPanel(
+                                 sliderInput("year",
+                                             "Year:",
+                                             sep = "",
+                                             min = 2000,
+                                             max = 2016,
+                                             value = 2010)
+                             ),
+                             # Show a plot of the generated distribution
+                             mainPanel(
+                                 plotlyOutput("undernourishPlot")
+                             ))),
+        tabPanel("Food Exports by Country",mainPanel(
+                                    plotlyOutput("exportsPlot")
+                                )),
+        tabPanel("Hunger and Food Production")
+    ),
 ))
+
+

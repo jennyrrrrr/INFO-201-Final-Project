@@ -3,27 +3,35 @@ library(plotly)
 library(ggplot2)
 library(ggmap)
 library(countrycode)
-
+# ======================================================
+# Read in data
+# ======================================================
 hunger_index_df <- read.csv("data/global-hunger-index.csv")
 undernourished_df <- read.csv("data/prevalence-of-undernourishment.csv")
-colnames(undernourished_df)[colnames(undernourished_df)=="Prevalence.of.undernourishment....of.population.....of.population."] <- "Percent_Undernourished"
+colnames(undernourished_df)[colnames(undernourished_df) == "Prevalence.of.undernourishment....of.population.....of.population."] <- "Percent_Undernourished"
 imp_exp_df <- read.csv("data/FAOSTAT_data_11-13-2019.csv")
+undernourished.data <- read.csv("data/undernourished.csv", 
+                                stringsAsFactors = FALSE)
 
-#Global number of people who are undernourished line graph.
-undernourished.data <- read.csv("data/undernourished.csv", stringsAsFactors = FALSE)
+# ======================================================
+# Global number of people who are undernourished line graph.
+# ======================================================
+globalrates_p <- function() {
+  p1 <- ggplot() + 
+  geom_line(aes(
+    y = Number.of.people.undernourished..FAO.SOFI..2018....World.Bank..2017.., 
+    x = Year), data = undernourished.data) +
+    scale_x_continuous(breaks=seq(1991,2017,2)) + 
+    scale_y_continuous(labels = scales::comma)
+  theme(text=element_text(family="Tahoma"))
+  p1 + labs(title = "Global Number of People Who Are Undernourished", x = "Year", y = "Amount of People", caption = "Source: UN FAO (2018); UN FAO (2017); World Bank (2017)")
+}
 
-p1 <- ggplot() + 
-  geom_line(aes(y = Number.of.people.undernourished..FAO.SOFI..2018....World.Bank..2017.., x = Year), data = undernourished.data) +
-  scale_x_continuous(breaks=seq(1991,2017,2)) + scale_y_continuous(labels = scales::comma)
-theme(text=element_text(family="Tahoma"))
-
-p1 + labs(title = "Global Number of People Who Are Undernourished", x = "Year", y = "Amount of People", caption = "Source: UN FAO (2018); UN FAO (2017); World Bank (2017)")
-
-
-
+# ======================================================
+# Create heat map for rates of undernourishment
+# ======================================================
 # geo styling
 l <- list(color = toRGB("grey"), width = 0.5)
-
 # specify map projection/options
 geo <- list(
   showframe = FALSE,
@@ -46,8 +54,10 @@ undernourished_p <- function(year) {
   )
 
 }
-undernourished_p
 
+# ======================================================
+# Create export df and heat map for global export values
+# ======================================================
 exp_df <- imp_exp_df %>% 
   group_by(Area, Element) %>% 
   summarize(Year = mean(Year), Value = sum(Value)) %>%
@@ -81,6 +91,6 @@ exports_p <- function(){
     geo = geo
   )
 }
-exports_p
+
 
 

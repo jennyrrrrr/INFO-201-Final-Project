@@ -13,7 +13,9 @@ library(shiny)
 ui <- shinyUI(fluidPage(
     titlePanel("Project Name"),
     navbarPage("Project: Hungry",
-        tabPanel("Hunger Rates"),
+        tabPanel("Hunger Rates", mainPanel(
+            plotlyOutput("globalratesPlot")
+        )),
         tabPanel("Global Undernourishment", sidebarLayout(
                              sidebarPanel(
                                  sliderInput("year",
@@ -26,10 +28,10 @@ ui <- shinyUI(fluidPage(
                              # Show a plot of the generated distribution
                              mainPanel(
                                  plotlyOutput("undernourishPlot")
-                             ))),
+        ))),
         tabPanel("Food Exports by Country",mainPanel(
                                     plotlyOutput("exportsPlot")
-                                )),
+        )),
         tabPanel("Hunger and Food Production")
     ),
 ))

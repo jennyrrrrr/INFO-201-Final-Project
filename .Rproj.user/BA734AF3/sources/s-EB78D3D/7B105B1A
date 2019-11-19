@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2843406784",
+    "hash" : "1618500771",
     "id" : "7B105B1A",
-    "lastKnownWriteTime" : 1574139843,
-    "last_content_update" : 1574139843529,
+    "lastKnownWriteTime" : 1574186904,
+    "last_content_update" : 1574186904299,
     "path" : "~/Desktop/INFO/Project/INFO-201/server.R",
     "project_path" : "server.R",
     "properties" : {
-        "cursorPosition" : "18,17",
-        "scrollLine" : "0"
+        "cursorPosition" : "21,19",
+        "scrollLine" : "3"
     },
     "read_only" : false,
     "read_only_alternatives" : [

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574136135810.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "771475833",
+    "id" : "ABBCD1BC",
+    "lastKnownWriteTime" : 1574136221,
+    "last_content_update" : 1574136221134,
+    "path" : "~/Desktop/INFO/Project/INFO-201/Hungry_App/ui.R",
+    "project_path" : "Hungry_App/ui.R",
+    "properties" : {
+        "cursorPosition" : "12,6",
+        "scrollLine" : "9"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

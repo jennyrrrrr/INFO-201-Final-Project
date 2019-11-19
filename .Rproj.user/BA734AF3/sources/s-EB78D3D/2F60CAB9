@@ -1,25 +1,24 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1574136157621.000,
+    "created" : 1574137084027.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "158492188",
-    "id" : "4B4C49C7",
+    "hash" : "0",
+    "id" : "2F60CAB9",
     "lastKnownWriteTime" : 1574136200,
-    "last_content_update" : 1574136200322,
-    "path" : "~/Desktop/INFO/Project/INFO-201/Hungry_App/app.R",
-    "project_path" : "Hungry_App/app.R",
+    "last_content_update" : 1574136200,
+    "path" : "~/Desktop/INFO/Project/INFO-201/app.R",
+    "project_path" : "app.R",
     "properties" : {
         "cursorPosition" : "0,34",
-        "scrollLine" : "0",
-        "tempName" : "Untitled1"
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 4,
+    "relative_order" : 2,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

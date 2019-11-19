@@ -19,17 +19,21 @@ geo <- list(
   projection = list(type = 'Mercator')
 )
 
-undernourished_p <- plot_geo(undernourished_df) %>%
-  add_trace(
-    z = ~Percent_Undernourished, color = ~Percent_Undernourished, colors = 'Reds',
-    text = ~Entity, locations = ~Code, marker = list(line = l)
-  ) %>%
-  colorbar(title = 'Percent of Population', tickprefix = '%') %>%
-  layout(
-    title = 'Undernourishment in the World',
-    geo = geo
+undernourished_p <- function(year) {
+  undernourished_df %>% 
+    filter(Year == year) %>% 
+    plot_geo() %>%
+    add_trace(
+      z = ~Percent_Undernourished, color = ~Percent_Undernourished, colors = 'Reds',
+      text = ~Entity, locations = ~Code, marker = list(line = l)
+    ) %>%
+    colorbar(title = 'Percent of Population', tickprefix = '%') %>%
+    layout(
+      title = paste("World Undernourishment in", year),
+      geo = geo
   )
 
+}
 undernourished_p
 
 exp_df <- imp_exp_df %>% 

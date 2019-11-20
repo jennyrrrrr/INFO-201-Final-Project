@@ -6,7 +6,6 @@ library(countrycode)
 # ======================================================
 # Read in data
 # ======================================================
-hunger_index_df <- read.csv("data/global-hunger-index.csv")
 undernourished_df <- read.csv("data/prevalence-of-undernourishment.csv")
 colnames(undernourished_df)[colnames(undernourished_df) == "Prevalence.of.undernourishment....of.population.....of.population."] <- "Percent_Undernourished"
 imp_exp_df <- read.csv("data/FAOSTAT_data_11-13-2019.csv")

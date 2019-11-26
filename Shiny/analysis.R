@@ -3,13 +3,14 @@ library(plotly)
 library(ggplot2)
 library(ggmap)
 library(countrycode)
+library(shiny)
 # ======================================================
 # Read in data
 # ======================================================
-undernourished_df <- read.csv("data/prevalence-of-undernourishment.csv")
+undernourished_df <- read.csv("Data/prevalence-of-undernourishment.csv")
 colnames(undernourished_df)[colnames(undernourished_df) == "Prevalence.of.undernourishment....of.population.....of.population."] <- "Percent_Undernourished"
-imp_exp_df <- read.csv("data/FAOSTAT_data_11-13-2019.csv")
-world_undernourished_df <- read.csv("data/undernourished.csv", 
+imp_exp_df <- read.csv("Data/FAOSTAT_data_11-13-2019.csv")
+world_undernourished_df <- read.csv("Data/undernourished.csv", 
                                     stringsAsFactors = FALSE)
 colnames(world_undernourished_df)[colnames(world_undernourished_df) == "Number.of.people.undernourished..FAO.SOFI..2018....World.Bank..2017.."] <- "Number_Undernourished"
 # ======================================================

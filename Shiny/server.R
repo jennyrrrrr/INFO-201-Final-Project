@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(plotly)
 source("analysis.R")
 
 # Define server logic required to draw a histogram

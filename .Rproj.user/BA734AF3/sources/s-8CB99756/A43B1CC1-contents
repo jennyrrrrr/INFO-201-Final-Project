@@ -22,6 +22,4 @@ server <- shinyServer(function(input, output) {
     output$globalratesPlot <- renderPlotly({
         globalrates_p()
     })
-    
-    
 })

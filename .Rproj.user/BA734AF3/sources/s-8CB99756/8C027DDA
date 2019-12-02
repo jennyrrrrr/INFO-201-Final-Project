@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575235325351.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8C027DDA",
+    "lastKnownWriteTime" : 1574749187,
+    "last_content_update" : 1574749187,
+    "path" : "~/Desktop/INFO/Project/INFO-201/Shiny/analysis.R",
+    "project_path" : "Shiny/analysis.R",
+    "properties" : {
+        "cursorPosition" : "55,3",
+        "scrollLine" : "10"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

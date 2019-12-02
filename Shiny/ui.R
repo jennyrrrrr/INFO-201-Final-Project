@@ -38,7 +38,7 @@ ui <- shinyUI(fluidPage(
                      withTags(b("Here we will explore how
                      one country’s malnutrition rate is related to the amount
                      of the country’s food supply that is imported and 
-                     exported."))
+                     exported.")),
                      )
                  ),
         tabPanel("Undernourishment by Country", sidebarLayout(
@@ -52,13 +52,13 @@ ui <- shinyUI(fluidPage(
                              ),
                              # Show a plot of the generated distribution
                              mainPanel(
-                                 plotlyOutput("undernourishPlot")
+                                 plotlyOutput("undernourishPlot"),
+                                 plotlyOutput("exportsPlot")
                                  )
                              )
                  ),
         tabPanel("Food Exports by Country",
                  mainPanel(
-                     plotlyOutput("exportsPlot")
                      )
                  ),
         tabPanel("Analysis: Hunger and Food Production"),

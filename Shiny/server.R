@@ -13,18 +13,17 @@ source("analysis.R")
 
 # Define server logic required to draw a histogram
 server <- shinyServer(function(input, output) {
-    output$undernourishPlot <- renderPlotly({
-        undernourished_p(input$year)
-    })
-    output$exportsPlot <- renderPlotly({
-        exports_p()
-    })
-    output$globalratesPlot <- renderPlotly({
-        globalrates_p()
-    })
-    
-    output$analysisPlot <- renderPlotly({
-        analysis_plot()
-    })
-    
+  output$undernourish_plot <- renderPlotly({
+    undernourished_p(input$year)
+  })
+  output$exports_plot <- renderPlotly({
+    exports_p()
+  })
+  output$globalrates_plot <- renderPlotly({
+    globalrates_p()
+  })
+
+  output$analysis_plot <- renderPlotly({
+    analysis_plot()
+  })
 })

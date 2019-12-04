@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3968177401",
+    "hash" : "0",
     "id" : "D4E5E082",
-    "lastKnownWriteTime" : 1575434055,
-    "last_content_update" : 1575434055708,
+    "lastKnownWriteTime" : 1575490925,
+    "last_content_update" : 1575490925533,
     "path" : "~/Desktop/INFO/Project/INFO-201/Shiny/analysis.R",
     "project_path" : "Shiny/analysis.R",
     "properties" : {
-        "cursorPosition" : "162,0",
-        "scrollLine" : "128"
+        "cursorPosition" : "87,20",
+        "scrollLine" : "80"
     },
     "read_only" : false,
     "read_only_alternatives" : [

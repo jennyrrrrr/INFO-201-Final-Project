@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2091567475",
+    "hash" : "1851238998",
     "id" : "D956B334",
-    "lastKnownWriteTime" : 1575433298,
-    "last_content_update" : 1575433298679,
+    "lastKnownWriteTime" : 1575491194,
+    "last_content_update" : 1575491194016,
     "path" : "~/Desktop/INFO/Project/INFO-201/Shiny/server.R",
     "project_path" : "Shiny/server.R",
     "properties" : {
-        "cursorPosition" : "25,39",
+        "cursorPosition" : "25,19",
         "scrollLine" : "0"
     },
     "read_only" : false,

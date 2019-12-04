@@ -1,19 +1,19 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1575323761278.000,
+    "created" : 1575424143633.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
-    "id" : "9877E3A0",
-    "lastKnownWriteTime" : 1575325133,
-    "last_content_update" : 1575325133660,
+    "hash" : "2535132829",
+    "id" : "3971ECEA",
+    "lastKnownWriteTime" : 1575429511,
+    "last_content_update" : 1575429511894,
     "path" : "~/Desktop/INFO/Project/INFO-201/Shiny/ui.R",
     "project_path" : "Shiny/ui.R",
     "properties" : {
-        "cursorPosition" : "54,65",
-        "scrollLine" : "41"
+        "cursorPosition" : "14,49",
+        "scrollLine" : "5"
     },
     "read_only" : false,
     "read_only_alternatives" : [

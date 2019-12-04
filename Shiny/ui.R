@@ -181,7 +181,7 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                          richer."
                          
             ),mainPanel(
-                     plotlyOutput("analysisPlot", width = 700, height = 700)
+                     plotlyOutput("analysisPlot", width = 800, height = 1000)
                  ))
             ),
         tabPanel("References",

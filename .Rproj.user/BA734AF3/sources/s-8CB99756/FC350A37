@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "3071478461",
     "id" : "FC350A37",
-    "lastKnownWriteTime" : 1575485821,
-    "last_content_update" : 1575485821784,
+    "lastKnownWriteTime" : 1575487044,
+    "last_content_update" : 1575487044098,
     "path" : "~/Desktop/INFO/Project/INFO-201/Shiny/ui.R",
     "project_path" : "Shiny/ui.R",
     "properties" : {
-        "cursorPosition" : "132,54",
-        "scrollLine" : "112"
+        "cursorPosition" : "130,156",
+        "scrollLine" : "108"
     },
     "read_only" : false,
     "read_only_alternatives" : [

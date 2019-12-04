@@ -128,7 +128,7 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                          makeup of exported goods compared to total trade,
                          divided by the percentage of the population that is
                          undernourished. Here is the formula:",
-                         withTags(img(src = "formula.png")),
+                         withMathJax(helpText("$$\\frac{\\frac{Exported Goods($)}{Imported Goods - Exported Goods ($)}*100%}{Percent Undernourishment}$$")),
                          br(),
                          "We believe that this value is most indicative of
                          food success. For example, a country with very low

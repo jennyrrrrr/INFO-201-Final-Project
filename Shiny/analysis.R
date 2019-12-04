@@ -4,6 +4,7 @@ library(ggplot2)
 library(ggmap)
 library(countrycode)
 library(shiny)
+
 # ======================================================
 # Read in data
 # ======================================================
@@ -140,20 +141,19 @@ joined_dataframe <- merge(joined_dataframe, regions_df_cleaned, by="Code")
 joined_dataframe <- joined_dataframe %>% 
   arrange(desc(Relative_Trade))
 
-# NOTE: TURNING scale_fill_gradien2 into scale_fill_gradient and removing "midpoint" makes the graph much
-# more colorful but less accurate.
 p4 <-  
-  ggplot(joined_dataframe,aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent)) +
+  ggplot(joined_dataframe, aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent,
+                               text=paste("Country:", Area, "<br>", "Relative Trade:", Relative_Trade, "<br>",
+                                          "Import in $:", Import.value, "<br>",
+                                          "Export in $:", Export.value, "<br>", "Percent Undernourished:",
+                                          Percent_Undernourished))) +
   theme_dark() +
   theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(),
         panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(y = "Relative Trade Transform (see analysis for transform details)",
+  labs(y = "Food Success Value (see analysis for more info)",
        x = "Country",
-       title = "Relative Trade and Percent Undernourishment by Country") +
+       title = "Food Success and Percent Undernourishment by Country") +
   coord_flip() +
- # scale_fill_gradient2(low = "lightgreen", high = "red", midpoint = 20) +
   geom_col(aes(color = Continent), color = "black") + #can do just "aes(Continent)" or can have no parameter or aes(color = Continent.)
   theme(plot.title = element_text(hjust = 0.5))
-(p4)
-final_plot <- ggplotly(p4)
-(final_plot)
+final_plot <- ggplotly(p4, tooltip = c("text"))

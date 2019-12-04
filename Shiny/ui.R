@@ -39,27 +39,28 @@ ui <- shinyUI(fluidPage(
                      one country’s malnutrition rate is related to the amount
                      of the country’s food supply that is imported and 
                      exported.")),
-                     )
-                 ),
+                 )
+        ),
         tabPanel("Undernourishment ", sidebarLayout(
-                             position = "right",
-                             sidebarPanel("This is going to be the analysis
+          position = "right",
+          sidebarPanel("This is going to be the analysis
                                           for the graphs"
-                             ),
-                             # Show a plot of the generated distribution
-                             mainPanel(fluidRow(
-                                 column(3,sliderInput("year",
-                                                      "Year:",
-                                                      sep = "",
-                                                      min = 2000,
-                                                      max = 2016,
-                                                      value = 2016)),
-                                 column(12,plotlyOutput("undernourishPlot")),
+          ),
+          # Show a plot of the generated distribution
+          mainPanel(fluidRow(
+            column(3,sliderInput("year",
+                                 "Year:",
+                                 sep = "",
+                                 min = 2000,
+                                 max = 2016,
+                                 value = 2016)),
+            column(12,plotlyOutput("undernourishPlot")),
                                  column(12,plotlyOutput("exportsPlot"))
                                  ))
                              )
                  ),
-        tabPanel("Analysis: Hunger vs. Food Trade"),
+        tabPanel("Analysis: Hunger vs. Food Trade",
+                 (plotlyOutput("final_plot", height=1200))),
         tabPanel("References",
                  mainPanel(
                      "Dataset 1:",

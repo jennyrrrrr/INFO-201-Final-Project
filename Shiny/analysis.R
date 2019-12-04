@@ -142,7 +142,7 @@ joined_dataframe <- joined_dataframe %>%
 
 # NOTE: TURNING scale_fill_gradien2 into scale_fill_gradient and removing "midpoint" makes the graph much
 # more colorful but less accurate.
-p4 <-  
+p4 <-   
   ggplot(joined_dataframe,aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent)) +
   theme_dark() +
   theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(),
@@ -154,6 +154,4 @@ p4 <-
  # scale_fill_gradient2(low = "lightgreen", high = "red", midpoint = 20) +
   geom_col(aes(color = Continent), color = "black") + #can do just "aes(Continent)" or can have no parameter or aes(color = Continent.)
   theme(plot.title = element_text(hjust = 0.5))
-(p4)
 final_plot <- ggplotly(p4)
-(final_plot)

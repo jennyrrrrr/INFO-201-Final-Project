@@ -37,7 +37,7 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                      br(),
                      br(),
                      withTags(b("Here we will explore how
-                     one country’s malnutrition rate is related to the amount
+                     one country’s undernutrition rate is related to the amount
                      of the country’s food supply that is imported and 
                      exported.")),
                      )
@@ -53,20 +53,18 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                              country(%)")),
                             br(),br(),
                             "In the world undernourishment map, we used the
-                            gradient palette to colored the percentage of
+                            gradient palette to color the percentage of
                             undernourishment population by country. The
                             countries with a deeper color mean that it has a
                             much more severe undernourishment situation during
-                            the selected year, vice versa, lighter color fill
-                            to a less severe undernourishment situation for the
-                            country in that year.",
+                            the selected year and vice versa.",
                             br(),br(),
                             "Comparing the global undernourishment level by
                             years, it is clearly seen that over the past few
                             years(from 2000 to 2016), the distribution of the
                             undernourishment over the world hasn’t been
                             changing a lot. The Africa and Asia areas have
-                            always been experiencing a high level of
+                            consistently been experiencing a high level of
                             undernourishment over the years. In contrast, America,
                             Oceania, and Europe area always been having a low
                             percentage of the undernourishment population over
@@ -98,8 +96,17 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                             most of the Asia, America, and Oceania countries
                             have an export value of around 50M$, and most of
                             the African countries has an export value of lower
-                            than 1M$."
-                            
+                            than 1M$.",
+                            br(),br(),
+                            withTags(b("Conclutions:")),
+                            br(),
+                            "It is important to notice these graphs have an
+                            inverse relationship. The countries with high
+                            exportation values have low undernourishment rates
+                            and countries with low exportation seem to have the
+                            highest rates of undernourishment. It should be
+                            noted that",
+                            withTags(b("correlation does not mean causation."))
                              ),
                              # Show a plot of the generated distribution
                              mainPanel(fluidRow(

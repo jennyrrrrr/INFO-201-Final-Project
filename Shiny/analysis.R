@@ -4,6 +4,7 @@ library(ggplot2)
 library(ggmap)
 library(countrycode)
 library(shiny)
+
 # ======================================================
 # Read in data
 # ======================================================
@@ -21,9 +22,9 @@ regions_df <- read.csv("Data/countryContinent.csv")
 # ======================================================
 globalrates_p <- function() {
   p1 <- ggplot() + 
-  geom_line(aes(
-    y = Number_Undernourished, 
-    x = Year), data = world_undernourished_df) +
+    geom_line(aes(
+      y = Number_Undernourished, 
+      x = Year), data = world_undernourished_df) +
     scale_x_continuous(breaks=seq(1991,2017,2)) + 
     scale_y_continuous(labels = scales::comma)
   theme(text=element_text(family="Tahoma"))
@@ -56,8 +57,8 @@ undernourished_p <- function(year) {
     layout(
       title = paste("World Undernourishment in", year),
       geo = geo
-  )
-
+    )
+  
 }
 
 # ======================================================
@@ -91,15 +92,15 @@ geo <- list(
 
 exports_p <- function(){
   plot_geo(modified_imp_exp_df) %>%
-  add_trace(
-    z = ~Export.Value, color = ~Export.Value, colors = 'Greens',
-    text = ~Area, locations = ~Code, marker = list(line = l)
-  ) %>%
-  colorbar(title = 'Export Value Quantity', tickprefix = '$') %>%
-  layout(
-    title = 'Exports in 2017',
-    geo = geo
-  )
+    add_trace(
+      z = ~Export.Value, color = ~Export.Value, colors = 'Greens',
+      text = ~Area, locations = ~Code, marker = list(line = l)
+    ) %>%
+    colorbar(title = 'Export Value Quantity', tickprefix = '$') %>%
+    layout(
+      title = 'Exports in 2017',
+      geo = geo
+    )
 }
 
 # ======================================================
@@ -140,18 +141,19 @@ joined_dataframe <- merge(joined_dataframe, regions_df_cleaned, by="Code")
 joined_dataframe <- joined_dataframe %>% 
   arrange(desc(Relative_Trade))
 
-# NOTE: TURNING scale_fill_gradien2 into scale_fill_gradient and removing "midpoint" makes the graph much
-# more colorful but less accurate.
-p4 <-   
-  ggplot(joined_dataframe,aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent)) +
+p4 <-  
+  ggplot(joined_dataframe, aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent,
+                               text=paste("Country:", Area, "<br>", "Relative Trade:", Relative_Trade, "<br>",
+                                          "Import in $:", Import.value, "<br>",
+                                          "Export in $:", Export.value, "<br>", "Percent Undernourished:",
+                                          Percent_Undernourished))) +
   theme_dark() +
   theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(),
         panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(y = "Relative Trade Transform (see analysis for transform details)",
+  labs(y = "Food Success Value (see analysis for more info)",
        x = "Country",
-       title = "Relative Trade and Percent Undernourishment by Country") +
+       title = "Food Success and Percent Undernourishment by Country") +
   coord_flip() +
- # scale_fill_gradient2(low = "lightgreen", high = "red", midpoint = 20) +
   geom_col(aes(color = Continent), color = "black") + #can do just "aes(Continent)" or can have no parameter or aes(color = Continent.)
   theme(plot.title = element_text(hjust = 0.5))
-final_plot <- ggplotly(p4)
+final_plot <- ggplotly(p4, tooltip = c("text"))

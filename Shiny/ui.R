@@ -12,13 +12,13 @@ library(plotly)
 
 # Define UI for application that draws a histogram
 ui <- shinyUI(fluidPage(
-    titlePanel("Interplay Between Food Importation/Exportation 
+  titlePanel("Interplay Between Food Importation/Exportation 
                and Hunger Statistics Around the Planet"),
-    navbarPage("Project: Hungry",
-        tabPanel("Global Undernourishment", 
-                 mainPanel(
-                     plotlyOutput("globalratesPlot"),
-                     "Human undernutrition — defined as dietary energy 
+  navbarPage("Project: Hungry",
+             tabPanel("Global Undernourishment", 
+                      mainPanel(
+                        plotlyOutput("globalratesPlot"),
+                        "Human undernutrition — defined as dietary energy 
                      consumption that falls under the minimum energy
                      requirement defined as necessary[1] — and hunger are
                      issues that are prevalent even today. As
@@ -33,25 +33,25 @@ ui <- shinyUI(fluidPage(
                      cannot begin to focus on more intellectual pursuits that
                      involve the advancement of society, instead of focusing
                      their efforts on self-survival.",
-                     br(),
-                     br(),
-                     withTags(b("Here we will explore how
+                        br(),
+                        br(),
+                        withTags(b("Here we will explore how
                      one country’s malnutrition rate is related to the amount
                      of the country’s food supply that is imported and 
                      exported.")),
-                     )
-                 ),
-        tabPanel("Undernourishment ", sidebarLayout(
-                             position = "right",
-                             sidebarPanel("This is going to be the analysis
+                      )
+             ),
+             tabPanel("Undernourishment ", sidebarLayout(
+               position = "right",
+               sidebarPanel("This is going to be the analysis
                                           for the graphs"
-                             ),
-                             # Show a plot of the generated distribution
-                             mainPanel(fluidRow(
-                                 column(3,sliderInput("year",
-                                                      "Year:",
-                                                      sep = "",
-                                                      min = 2000,
+               ),
+               # Show a plot of the generated distribution
+               mainPanel(fluidRow(
+                 column(3,sliderInput("year",
+                                      "Year:",
+                                      sep = "",
+                                      min = 2000,
                                                       max = 2016,
                                                       value = 2016)),
                                  column(12,plotlyOutput("undernourishPlot")),
@@ -59,7 +59,9 @@ ui <- shinyUI(fluidPage(
                                  ))
                              )
                  ),
-        tabPanel("Analysis: Hunger vs. Food Trade"),
+        tabPanel("Analysis: Hunger vs. Food Trade", 
+                 mainPanel(
+                   plotlyOutput(final_plot, height = 1200))),
         tabPanel("References",
                  mainPanel(
                      "Dataset 1:",

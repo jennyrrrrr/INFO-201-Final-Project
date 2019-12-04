@@ -9,10 +9,9 @@
 
 library(shiny)
 library(plotly)
-library(shinythemes)
 
 # Define UI for application that draws a histogram
-ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
+ui <- shinyUI(fluidPage(
     titlePanel("Interplay Between Food Importation/Exportation 
                and Hunger Statistics Around the Planet"),
     navbarPage("Project: Hungry",
@@ -37,7 +36,7 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                      br(),
                      br(),
                      withTags(b("Here we will explore how
-                     one country’s undernutrition rate is related to the amount
+                     one country’s malnutrition rate is related to the amount
                      of the country’s food supply that is imported and 
                      exported.")),
                      )
@@ -60,12 +59,7 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                                  ))
                              )
                  ),
-        tabPanel("Analysis: Hunger vs. Food Trade",
-                 mainPanel(
-                     # plotlyOutput("analysisPlot"),
-                     # "Analysis text"
-                     )
-                 ),
+        tabPanel("Analysis: Hunger vs. Food Trade"),
         tabPanel("References",
                  mainPanel(
                      "Dataset 1:",

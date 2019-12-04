@@ -141,8 +141,8 @@ joined_dataframe <- merge(joined_dataframe, regions_df_cleaned, by="Code")
 joined_dataframe <- joined_dataframe %>% 
   arrange(desc(Relative_Trade))
 
-analysis_plot <- function() {
-  p4 <- ggplot(joined_dataframe, aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent,
+p4 <-  
+  ggplot(joined_dataframe, aes(x=reorder(Area, -Relative_Trade), y=Relative_Trade, fill = Continent,
                                text=paste("Country:", Area, "<br>", "Relative Trade:", Relative_Trade, "<br>",
                                           "Import in $:", Import.value, "<br>",
                                           "Export in $:", Export.value, "<br>", "Percent Undernourished:",
@@ -155,9 +155,5 @@ analysis_plot <- function() {
        title = "Food Success and Percent Undernourishment by Country") +
   coord_flip() +
   geom_col(aes(color = Continent), color = "black") + #can do just "aes(Continent)" or can have no parameter or aes(color = Continent.)
-  theme(plot.title = element_text(hjust = 0.5)) 
+  theme(plot.title = element_text(hjust = 0.5))
 final_plot <- ggplotly(p4, tooltip = c("text"))
-return(final_plot)
-}
-analysis_plot()
-

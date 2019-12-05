@@ -9,16 +9,10 @@
 
 library(shiny)
 library(plotly)
-library(shinythemes)
 
 # Define UI for application that draws a histogram
-<<<<<<< HEAD
 ui <- shinyUI(fluidPage(
   titlePanel("Interplay Between Food Importation/Exportation 
-=======
-ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
-    titlePanel("Interplay Between Food Importation/Exportation 
->>>>>>> c5b0456c3cd3f4733c6ef0c289c2fd8948482a83
                and Hunger Statistics Around the Planet"),
   navbarPage("Project: Hungry",
              tabPanel("Global Undernourishment", 
@@ -65,16 +59,9 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                                  ))
                              )
                  ),
-<<<<<<< HEAD
         tabPanel("Analysis: Hunger vs. Food Trade", 
                  mainPanel(
-                   plotlyOutput(final_plot, height = 1200))),
-=======
-        tabPanel("Analysis: Hunger vs. Food Trade",
-                 mainPanel(
-                     plotlyOutput("analysisPlot", width =600 , height = 575)
-                 )),
->>>>>>> c5b0456c3cd3f4733c6ef0c289c2fd8948482a83
+                   plotlyOutput("final_plot", height = 1200))),
         tabPanel("References",
                  mainPanel(
                      "Dataset 1:",
@@ -97,7 +84,8 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                      
                      "Dataset 2:",
                      a("Undernourishment by country",
-                       href = "https://ourworldindata.org/grapher/prevalence-of-undernourishment"),
+                       href = 
+"https://ourworldindata.org/grapher/prevalence-of-undernourishment"),
                      br(),
                      "This dataset measures the share of the population that
                      has a caloric intake which is insufficient to meet the
@@ -112,7 +100,8 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                      "Dataset 3:",
                      a("Global amount of undernourishment",
                        href = 
-                       "https://ourworldindata.org/grapher/global-population-defined-as-undernourished?time=1991..2017"),
+                         paste0("https://ourworldindata.org/grapher/",
+                "global-population-defined-as-undernourished?time=1991..2017"),
                      br(),
                      "Gathered by ourworldindata, this dataset details the 
                      total number of people who are defined as undernourished
@@ -128,7 +117,5 @@ ui <- shinyUI(fluidPage(theme = shinytheme("cosmo"),
                      temperature of a country was not considered in the data."
                  )
                  )
-    ),
-))
-
-
+    )
+)))

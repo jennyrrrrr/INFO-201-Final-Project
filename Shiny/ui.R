@@ -115,11 +115,11 @@ ui <- shinyUI(fluidPage(
       # Show a plot of the generated distribution
       mainPanel(fluidRow(
         column(3, sliderInput("year",
-                              "Year:",
-                              sep = "",
-                              min = 2000,
-                              max = 2016,
-                              value = 2016
+          "Year:",
+          sep = "",
+          min = 2000,
+          max = 2016,
+          value = 2016
         )),
         column(12, plotlyOutput("undernourish_plot")),
         column(12, plotlyOutput("exports_plot"))

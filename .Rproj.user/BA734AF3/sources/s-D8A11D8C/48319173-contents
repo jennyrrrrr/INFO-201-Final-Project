@@ -22,9 +22,9 @@ ui <- shinyUI(fluidPage(
       "Global Undernourishment",
       mainPanel(
         plotlyOutput("globalrates_plot"),
-        "Human undernutrition — defined as dietary energy
+        "Human undernutrition - defined as dietary energy
                      consumption that falls under the minimum energy
-                     requirement defined as necessary[1] — and hunger are
+                     requirement defined as necessary[1] - and hunger are
                      issues that are prevalent even today. As
                      you can see from the graph above, global rates of
                      malnutrition are still very high and in recent years have
@@ -40,12 +40,12 @@ ui <- shinyUI(fluidPage(
         br(),
         br(),
         withTags(b("Here we will explore how
-                     one country’s undernutrition rate is related to the amount
-                     of the country’s food supply that is imported and
+                     one country's undernutrition rate is related to the amount
+                     of the country's food supply that is imported and
                      exported.")),
       )
     ),
-    tabPanel("Undernourishment ", sidebarLayout(
+    tabPanel("Exports and Undernourishment ", sidebarLayout(
       position = "right",
       sidebarPanel(
         withTags(b("Undernourishment:")),
@@ -65,7 +65,7 @@ ui <- shinyUI(fluidPage(
         "Comparing the global undernourishment level by
                             years, it is clearly seen that over the past few
                             years(from 2000 to 2016), the distribution of the
-                            undernourishment over the world hasn’t been
+                            undernourishment over the world hasn't been
                             changing a lot. The Africa and Asia areas have
                             consistently been experiencing a high level of
                             undernourishment over the years. In contrast,
@@ -85,7 +85,7 @@ ui <- shinyUI(fluidPage(
                             export dataset in 2017. As it is clearly shown in
                             the undernourishment data visualization, the
                             distribution of the global undernourishment level
-                            hasn’t been changing a lot over the past 16 years,
+                            hasn't been changing a lot over the past 16 years,
                             thus it could be assumed that 2017 would have a
                             similar undernourishment level as for 2016.")),
         br(), br(),
@@ -125,7 +125,7 @@ ui <- shinyUI(fluidPage(
         column(12, plotlyOutput("exports_plot"))
       ))
     )),
-    tabPanel("Analysis: Hunger vs. Food Trade", sidebarLayout(
+    tabPanel("Analysis: Food Success Per Country", sidebarLayout(
       position = "right",
       sidebarPanel(
         "Pictured [left] is a graph of food success per
@@ -162,7 +162,7 @@ ui <- shinyUI(fluidPage(
         br(), br(),
         withTags(b("ANALYSES AND CONCLUSIONS")),
         br(),
-        "General trends can be seen in the data — for example
+        "General trends can be seen in the data - for example
                          , we can see that Europe has a very high food success
                          value for the large majority of its countries. In fact,
                          the majority of the top 25th percentile of food success
@@ -174,19 +174,19 @@ ui <- shinyUI(fluidPage(
         "The data results are generally not too surprising.
                          More developed regions of the world have higher food
                          success values, due to low undernourishment rates and
-                         high export percentages. Some countries — Japan, for
-                         example — have low food success values yet low
+                         high export percentages. Some countries - Japan, for
+                         example - have low food success values yet low
                          undernourishment values. This is due to relatively low
                          exports compared to imports. However, this raises the
                          question: why are these exports so low? Is it due to
                          culture? Government policy? Isolationism? Maybe the
-                         country simply doesn’t have land suitable for food
+                         country simply doesn't have land suitable for food
                          production? Organizations can wield this information
                          to delve deeper to address possible issues in a
-                         country’s food trade.",
+                         country's food trade.",
         br(), br(),
         "This work can be used when providing humanitarian aid
-                         to countries — for example, if a country has high
+                         to countries - for example, if a country has high
                          export rates but also high undernourishment, perhaps
                          something is to be said about disproportionate
                          benefit: lots of exporting is going on to generate
@@ -196,7 +196,7 @@ ui <- shinyUI(fluidPage(
                          for the country takes priority over making the rich
                          richer."
       ), mainPanel(
-        plotlyOutput("analysis_plot", width = 800, height = 1000)
+        plotlyOutput("final_plot", width = 1500, height = 1000)
       )
     )),
     tabPanel(
@@ -231,9 +231,9 @@ ui <- shinyUI(fluidPage(
                      minimum energy requirements necessary for a given
                      individual. Countries with undernourishment under 2.5% are
                      automatically given a value of 2.5%. This may be a
-                     weakness — hypothetically, a stellar country where no one
+                     weakness - hypothetically, a stellar country where no one
                      is undernourished will still have a 2.5% undernourishment
-                     rate — small, but noticeable nonetheless.",
+                     rate - small, but noticeable nonetheless.",
         br(), br(),
         "Dataset 3:",
         a("Global amount of undernourishment",
@@ -256,5 +256,5 @@ ui <- shinyUI(fluidPage(
                      temperature of a country was not considered in the data."
       )
     )
-  ),
+  )
 ))

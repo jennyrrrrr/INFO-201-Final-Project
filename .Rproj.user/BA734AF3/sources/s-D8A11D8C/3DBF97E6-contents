@@ -9,15 +9,16 @@ library(shiny)
 # Read in data
 # ======================================================
 undernourished_df <- read.csv("Data/prevalence-of-undernourishment.csv")
-colnames(undernourished_df)[colnames(undernourished_df) == "Prevalence.of.under
-  nourishment....of.population.....of.population."] <- "Percent_Undernourished"
+colnames(undernourished_df)[colnames(undernourished_df) ==
+  "Prevalence.of.undernourishment....of.population.....of.population."] <-
+  "Percent_Undernourished"
 imp_exp_df <- read.csv("Data/FAOSTAT_data_11-13-2019.csv")
 world_undernourished_df <- read.csv("Data/undernourished.csv",
   stringsAsFactors = FALSE
 )
-colnames(world_undernourished_df)[colnames(world_undernourished_df) == "Number.
-            of.people.undernourished..
-            FAO.SOFI..2018....World.Bank..2017.."] <- "Number_Undernourished"
+colnames(world_undernourished_df)[colnames(world_undernourished_df) ==
+  "Number.of.people.undernourished..FAO.SOFI..2018....World.Bank..2017.."] <-
+  "Number_Undernourished"
 regions_df <- read.csv("Data/countryContinent.csv")
 
 # ======================================================
@@ -82,11 +83,13 @@ imp_df <- imp_exp_df %>%
 
 modified_imp_exp_df <- merge(exp_df, imp_df, by = "Area")
 colnames(modified_imp_exp_df)[colnames(modified_imp_exp_df) ==
-                                "Value.x"] <- "Export.Value"
+  "Value.x"] <- "Export.Value"
 colnames(modified_imp_exp_df)[colnames(modified_imp_exp_df) ==
-                                "Value.y"] <- "Import.Value"
-modified_imp_exp_df$Code <- countrycode(modified_imp_exp_df$Area,
-                                        "country.name", "genc3c")
+  "Value.y"] <- "Import.Value"
+modified_imp_exp_df$code <- countrycode(
+  modified_imp_exp_df$Area,
+  "country.name", "genc3c"
+)
 modified_imp_exp_df$imp_exp_difference <- modified_imp_exp_df$Export.Value -
   modified_imp_exp_df$Import.Value
 
@@ -101,7 +104,7 @@ exports_p <- function() {
   plot_geo(modified_imp_exp_df) %>%
     add_trace(
       z = ~Export.Value, color = ~Export.Value, colors = "Greens",
-      text = ~Area, locations = ~Code, marker = list(line = l)
+      text = ~Area, locations = ~code, marker = list(line = l)
     ) %>%
     colorbar(title = "Export Value Quantity", tickprefix = "$") %>%
     layout(
@@ -111,7 +114,7 @@ exports_p <- function() {
 }
 
 # ======================================================
-# Import/Export Ratio per country vs hunger graph
+# Food Success per country vs hunger graph
 # ======================================================
 
 # Calculating ratio of import to export where the ratio = (import / export)
@@ -120,16 +123,21 @@ imp_exp_ratio <- merge(exp_df, imp_df, by = "Area")
 colnames(imp_exp_ratio)[colnames(imp_exp_ratio) == "Value.x"] <- "Export.value"
 colnames(imp_exp_ratio)[colnames(imp_exp_ratio) == "Value.y"] <- "Import.value"
 
-imp_exp_ratio$Code <- countrycode(imp_exp_ratio$Area, "country.name", "genc3c")
+imp_exp_ratio$code <- countrycode(imp_exp_ratio$Area, "country.name", "genc3c")
+colnames(imp_exp_ratio)[colnames(imp_exp_ratio) == "code"] <- "country_code"
 
 recent_undernour <- undernourished_df %>%
   filter(undernourished_df$Year == 2016)
+colnames(recent_undernour)[colnames(recent_undernour) == "Code"] <-
+  "country_code"
 
-joined_dataframe <- merge(imp_exp_ratio, recent_undernour, by = "Code")
+joined_dataframe <- merge(imp_exp_ratio, recent_undernour,
+  by.x = "country_code", by.y = "country_code"
+)
 
-joined_dataframe$Relative_Trade <-
+joined_dataframe$relative_trade <-
   round((100 * joined_dataframe$Export.value /
-           (joined_dataframe$Import.value + joined_dataframe$Export.value))
+    (joined_dataframe$Import.value + joined_dataframe$Export.value))
   / joined_dataframe$Percent_Undernourished, 2)
 
 
@@ -141,20 +149,25 @@ regions_df_cleaned <- regions_df %>%
 
 # Add country/continent dataframe
 primed_dataframe <- joined_dataframe %>%
-  select(Code, Area, Relative_Trade, Percent_Undernourished,
-         Import.value, Export.value) %>%
-  arrange(desc(Relative_Trade)) %>%
+  select(
+    country_code, Area, relative_trade, Percent_Undernourished,
+    Import.value, Export.value
+  ) %>%
+  arrange(desc(relative_trade)) %>%
   mutate(Area = factor(Area, Area))
 
-joined_dataframe <- merge(joined_dataframe, regions_df_cleaned, by = "Code")
+joined_dataframe <- merge(
+  x = joined_dataframe, y = regions_df_cleaned,
+  by.x = "country_code", by.y = "Code"
+)
 joined_dataframe <- joined_dataframe %>%
-  arrange(desc(Relative_Trade))
+  arrange(desc(relative_trade))
 
 analysis_plot <- function() {
   p4 <- ggplot(joined_dataframe, aes(
-    x = reorder(Area, -Relative_Trade), y = Relative_Trade, fill = Continent,
+    x = reorder(Area, -relative_trade), y = relative_trade, fill = Continent,
     text = paste(
-      "Country:", Area, "<br>", "Relative Trade:", Relative_Trade, "<br>",
+      "Country:", Area, "<br>", "Relative Trade:", relative_trade, "<br>",
       "Import in $:", Import.value, "<br>",
       "Export in $:", Export.value, "<br>", "Percent Undernourished:",
       Percent_Undernourished

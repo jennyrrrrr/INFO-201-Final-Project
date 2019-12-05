@@ -62,11 +62,7 @@ ui <- shinyUI(fluidPage(
                             much more severe undernourishment situation during
                             the selected year and vice versa.",
         br(), br(),
-        "Comparing the global undernourishment level by
-                            years, it is clearly seen that over the past few
-                            years(from 2000 to 2016), the distribution of the
-                            undernourishment over the world hasn't been
-                            changing a lot. The Africa and Asia areas have
+        "The Africa and Asia areas have
                             consistently been experiencing a high level of
                             undernourishment over the years. In contrast,
                             America,
